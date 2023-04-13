@@ -1,0 +1,87 @@
+{% extends "index.html" %}
+
+{% block content %}
+<style>
+    .innercontainer{
+        width:95%;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid black;
+        border-radius: 7px;
+        height: 90%;
+    }
+    .itemcontainer{
+        margin-top: 10%;
+        margin-bottom: 5%;
+    }
+    .error{
+        color:red;
+        margin: auto;
+        font-size: 20px;
+    }
+    .success{
+        color:green;
+        margin: auto;
+        font-size: 20px;
+
+
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="itemcontainer mt-5">
+        <div class="row">
+            <div class="col-md-7">
+                <div class="innercontainer">
+                    <div class="section-title">
+                        <h2>Property Details</h2>
+                      </div>
+                      <table class="table">
+                        <tr>
+                            <td>Property Name</td>
+                            <th>: {{proper.name}}</th>
+                        </tr>
+                        <tr>
+                            <td>Rent</td>
+                            <th>: {{proper.rentpermomth}}/month</th>
+                        </tr>
+                        <tr>
+                            <td>Description</td>
+                            <th>: {{proper.description}}</th>
+                        </tr>
+                        <tr>
+                            <td>Address</td>
+                            <th>: {{proper.place}}, {{proper.district}}, {{proper.state}}</th>
+                        </tr>
+                        <tr><td>Land Loard</td> 
+                        <th>:{{proper.user.first_name}}</th>
+                        </tr>
+                      </table>
+
+                </div>
+
+            </div>
+            <div class="col-md-5">
+                <div class="innercontainer">
+                    <div class="section-title">
+                        <h2 >Rentel Proceedings</h2>
+                      </div>
+                      <img src="{{proper.image.url}}" style="width:100%;height:200px" alt="">
+                </div>
+
+            </div>
+            <div class="col-md-12 mt-3 text-right">
+                <br><br>
+                
+                <a href="{%url 'CustomerValidation' proper.id %}" class="btn btn-info">Validate Property</a>
+                <a href="{%url 'RequestforRentel' proper.id %}" class="btn btn-warning">Request For Rentel</a><br>
+                {% for m in messages  %}
+                  <span class="{{m.tags}}">{{m}}</span>
+                {% endfor %}
+            </div>   
+
+        </div>
+    </div>
+</div>
+  
+{% endblock %}

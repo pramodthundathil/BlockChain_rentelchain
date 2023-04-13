@@ -1,0 +1,49 @@
+{% extends "landloardindex.html" %}
+{% block content %}
+<style>
+    .itemcomtainer{
+        width:80%;
+        margin: auto;
+        margin-top: 10%;
+        border:1px solid black;
+        padding: 30px;
+        border-radius: 9px;
+        
+    }
+</style>
+<div class="container">
+    <div class="itemcomtainer">
+       
+                <div class="section-title">
+                    <h2>Profile</h2>
+                  </div>
+                  <img src="{{profile.pro_pic.url}}" style="width:100px;height:150px" alt="pro_pic">
+                  <a style="margin-left: 30px;" target="_blank" href="{{profile.idproof.url}}" class="btn btn-info">Download ID Proof</a>
+                  <h6>Profile Pic</h6>
+                  <table class="table table-striped">
+                    <tr>
+                        <td>Name</td>
+                        <th>: {{profile.name}}</th>
+                    </tr>
+                    <tr>
+                        <td>Place</td>
+                        <th>: {{profile.place}}</th>
+                    </tr>
+                    <tr>
+                        <td>District</td>
+                        <th>: {{profile.district}}</th>
+                    </tr>
+                    <tr>
+                        <td>State</td>
+                        <th>: {{profile.state}}</th>
+                    </tr>
+                    <tr>
+                        <td>Phone</td>
+                        <th>: {{profile.phone}}</th>
+                    </tr>
+
+                </table>
+    </div>
+</div>
+<br><br><br>
+{% endblock %}

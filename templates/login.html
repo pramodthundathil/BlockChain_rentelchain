@@ -1,0 +1,41 @@
+{% extends "index.html" %}
+
+{% block content %}
+<style>
+    .logincontainer{
+        width: 50%;
+        height: auto;
+        margin: auto;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        text-align: center;
+        margin-top: 10%;
+        border-radius: 10px;
+    }
+    .logincontainer input{
+        width: 90%;
+        padding: 6px;
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="logincontainer mt-5">
+        <br><br>
+        <h3>Login</h3>
+        {% for m in messages  %}
+                  <span class="{{m.tags}}">{{m}}</span>
+                {% endfor %}
+        <br>
+    <form action="{%url 'SignIn' %}" method="POST">
+            {% csrf_token %}
+        <input type="text" name="uname" placeholder="User Name"><br><br>
+        <input type="password" name="pswd" placeholder="Password"><br><br>
+        <input type="submit" class="btn btn-success" value="Login"><br><br>
+           
+    </form>
+    dont have an account click <a href="{%url 'SignUp' %}">Here</a>
+        <br><br> <br>
+    </div>
+</div>
+<br><br><br><br><br>
+
+{% endblock %}

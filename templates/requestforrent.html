@@ -1,0 +1,123 @@
+{% extends "index.html" %}
+
+{% block content %}
+<style>
+    .innercontainer{
+        width:95%;
+        height: 100%;
+        margin: auto;
+        margin-top: 10px;
+        padding: 20px;
+        border: 1px solid black;
+        border-radius: 7px;
+        height: 90%;
+    }
+    .itemcontainer{
+        margin-top: 10%;
+        margin-bottom: 5%;
+    }
+    .error{
+        color:red;
+        margin: auto;
+        font-size: 20px;
+    }
+    .success{
+        color:green;
+        margin: auto;
+        font-size: 20px;
+    }
+    .section-title h2{
+        font-size: small;
+    }
+    .innercontainer input{
+        width:90%;
+        padding: 4px;
+    }
+</style>
+<div class="container mt-4">
+    <div class="itemcontainer mt-5">
+        <div class="row">
+            <div class="col-md-4" style="width:100%">
+                <div class="innercontainer">
+                    <div class="section-title">
+                        <h2>Property Details</h2>
+                      </div>
+                      <table class="table">
+                        <tr>
+                            <td>Property Name</td>
+                            <th>: {{proper.name}}</th>
+                        </tr>
+                        <tr>
+                            <td>Rent</td>
+                            <th>: {{proper.rentpermomth}}/month</th>
+                        </tr>
+                        <tr>
+                            <td>Description</td>
+                            <th>: {{proper.description}}</th>
+                        </tr>
+                        <tr>
+                            <td>Address</td>
+                            <th>: {{proper.place}}, {{proper.district}}, {{proper.state}}</th>
+                        </tr>
+                        <tr><td>Land Loard</td> 
+                        <th>:{{proper.user.first_name}}</th>
+                        </tr>
+                      </table>
+
+                </div>
+
+            </div>
+            <div class="col-md-4" style="width:100%">
+                <div class="innercontainer">
+                    <div class="section-title">
+                        <h2 >Rentel Proceedings</h2>
+                      </div>
+                      <!-- <img src="{{proper.image.url}}" style="width:100%;height:200px" alt=""> -->
+                      <ul style="list-style:circle;">
+                        <li>Rentel will subject to approval</li>
+                        <li>Once ladloard approved the request smart contract will be generated</li>
+                        <li>Smart Contract subject secured with block chain technology will not be changed after contract generation</li>
+                        <li>Advance Amount of 3 month rent will be payable at the time of takeover the property otherwise contract will be invalid</li>
+                        <li>Contract can cancel on mutual approvels</li>
+
+                    </ul>
+                </div>
+
+            </div>
+            <div class="col-md-4" style="width:100%">
+                <div class="innercontainer">
+                    <div class="section-title">
+                        <h2 >Fill out Personal Details</h2>
+                        <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <input type="text" name="name" placeholder="Name of the leaser ">
+                            <br><br>
+                            <input type="text" name="place" placeholder="Place of lease" id="">
+                            <br><br>
+                            <input type="text" name="district" placeholder="District of leaser" id="">
+                            <br><br>
+                            <input type="text" name="state" placeholder="State of leaser " id="">
+                            <br><br>
+                            <input type="text" name="contry" placeholder="Country of leaser" id="">
+                            <br><br>
+                            <input type="number" name="phone" placeholder="Phone Number">
+                            <br><br>
+
+                            <input type="file" name="photo">Photo of Leaser
+                            <br><br>
+                            <input type="file" name="idproof">Id Proof of leaser
+
+
+                            <br><br>
+                            <button type="submit" class="btn btn-success">Request For Rentel Approval</button>
+                        </form>
+                      </div>
+                      <!-- <img src="{{proper.image.url}}" style="width:100%;height:200px" alt=""> -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+  
+{% endblock %}

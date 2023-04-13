@@ -1,0 +1,49 @@
+{% extends "index.html" %}
+
+{% block content %}
+<style>
+    .logincontainer{
+        width: 50%;
+        height: auto;
+        margin: auto;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        text-align: center;
+        margin-top: 10%;
+        border-radius: 10px;
+    }
+    .logincontainer input{
+        width: 90%;
+        padding: 6px;
+    }
+    ul{
+        list-style: none;
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="logincontainer mt-5">
+        <br><br>
+        <h3>Register</h3>
+        <h6 style="color:red;text-align:center;"> {{form.errors}}</h6>
+        <br>
+        <form method="post">
+            {% csrf_token %}
+            
+        {% for fields in form  %}     
+
+        {{fields.label}}:<br>
+        {{fields}}<br><br>
+        {% endfor %}
+        
+
+        <button type="submit" class="btn btn-success">Register</button><br><br>
+           
+        
+    </form>
+    Have an account click <a href="{%url 'SignIn' %}">Here</a>
+        <br><br> <br>
+    </div>
+</div>
+<br><br><br><br><br>
+
+{% endblock %}

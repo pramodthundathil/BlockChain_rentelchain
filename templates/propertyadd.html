@@ -1,0 +1,40 @@
+{% extends "landloardindex.html" %}
+{% load static %}
+{% block content %}
+
+<style>
+    .buttoncontainer{
+        padding: 20px;
+        width:80%;
+        border: 1px solid black;
+        border-radius: 9px;
+        margin: auto;
+        margin-top: 15%;
+        margin-bottom: 10%;
+    }
+    .buttoncontainer input{
+        width: 60%;
+        padding: 5px;
+
+    }
+</style>
+  
+ <div class="container mt-5 text-center">
+    <div class="buttoncontainer mt-5">
+        <div class="section-title">
+            <h2>Add New Property</h2>
+          </div><br>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+        {% for fields in form  %}
+        {{fields.label}}:<br>
+        {{fields}} <br><br>
+          
+        {% endfor %}
+     <br><br>   
+<button  type="submit" class="btn btn-warning">Add New Property</button>
+</form>
+</div>
+ </div>
+
+{% endblock %}

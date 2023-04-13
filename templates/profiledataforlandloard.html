@@ -1,0 +1,51 @@
+{% extends "landloardindex.html" %}
+{% block content %}
+<style>
+    .innercontainer{
+        width:80%;
+        margin: auto;
+        margin-top: 10%;
+        padding: 20px;
+        text-align: center;
+        border: 1px solid black;
+        border-radius: 9px;
+
+    }
+    .innercontainer input{
+        width:80%;
+        padding: 5px;
+    }
+</style>
+<div class="container mt-5">
+<div class="innercontainer">
+    <div class="section-title">
+        <h2 >Fill out Personal Details</h2>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="text" name="name" placeholder="Name ">
+            <br><br>
+            <input type="text" name="place" placeholder="Place" id="">
+            <br><br>
+            <input type="text" name="district" placeholder="District" id="">
+            <br><br>
+            <input type="text" name="state" placeholder="State " id="">
+            <br><br>
+            <input type="text" name="contry" placeholder="Country" id="">
+            <br><br>
+            <input type="number" name="phone" placeholder="Phone Number">
+            <br><br>
+
+            <input type="file" name="photo">Photo of Leaser
+            <br><br>
+            <input type="file" name="idproof">Id Proof of leaser
+
+
+            <br><br>
+            <button type="submit" class="btn btn-success">Update Data</button>
+        </form>
+      </div>
+      <!-- <img src="{{proper.image.url}}" style="width:100%;height:200px" alt=""> -->
+</div>
+</div>
+<br><br>
+{% endblock %}
