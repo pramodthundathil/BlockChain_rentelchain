@@ -1,6 +1,4 @@
 # Block chain Calculations-----------------------------------------------------
-
-
 import hashlib
 from datetime import datetime
 

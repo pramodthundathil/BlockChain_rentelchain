@@ -76,3 +76,18 @@ def SignUp(request):
 def SignOut(request):
     logout(request)
     return redirect('SignIn')
+
+def SearchProperty(request):
+    if request.method =="POST":
+        value = request.POST['search']
+        proper = Properties.objects.filter(place__contains = value)
+        if len(proper) == 0:
+            flag = 0
+        else:
+            flag = 1
+        return render(request,'searchedproperties.html',{"proper":proper,"flag":flag})
+        
+        
+        
+        
+    return redirect("Index")

@@ -55,6 +55,7 @@
         <ul class="nav navbar-nav navbar-right">
           <li><a href="{%url 'Index' %}" class="page-scroll">Home</a></li>
           <li><a href="{%url 'Index' %}#services" class="page-scroll">Properties</a></li>
+          
 
           {% if request.user.is_authenticated %}
 
@@ -71,6 +72,18 @@
         </ul>
       </div>
       <!-- /.navbar-collapse -->
+      <form action="{%url 'SearchProperty' %}" method="post">
+        {% csrf_token %}
+        <ul style="list-style: none;">
+        <li style="float:right">
+          <a>
+            <input type="text" name="search" placeholder="Search Property"
+              style="width:300px;padding:5px;border-radius: 5px;border:.5px solid darkblue ">
+            <button type="submit" style="padding:5px 10px;background-color:darkblue;color:white;border:.5px darkblue solid;border-radius:5px">Search</button>
+          </a>
+        </li>
+      </ul>
+      </form>
     </div>
   </nav>
   <!-- Header -->
@@ -150,7 +163,7 @@
       </div>
       <div class="row">
         {% for item in proper %}
-          
+
         <div class="col-md-4">
           <div class="service-media"> <img src="{{item.image.url}}" style="width:100%;height:250px" alt=" "> </div>
           <div class="service-desc">
@@ -158,9 +171,9 @@
             <h6>In {{item.place}}, {{item.district}}, {{item.state}}</h6>
             <p style="height:60px;overflow:scroll">{{item.description}}</p>
             <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.</p> -->
-          <h5>Rent: {{item.rentpermomth}}/month</h5>
-          <a href="{%url 'ViewProperty' item.id%}" class="btn btn-info btn-small">View Property</a>
-          <!-- <a href="{%url 'DeleteProperty' item.id%}" class="btn btn-danger">delete</a> -->
+            <h5>Rent: {{item.rentpermomth}}/month</h5>
+            <a href="{%url 'ViewProperty' item.id%}" class="btn btn-info btn-small">View Property</a>
+            <!-- <a href="{%url 'DeleteProperty' item.id%}" class="btn btn-danger">delete</a> -->
           </div>
         </div>
         {% endfor %}
