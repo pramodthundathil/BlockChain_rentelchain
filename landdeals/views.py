@@ -256,11 +256,14 @@ def ApproveRentrequest(request,pk):
         return redirect('MyRentels')
     
 def Landloardprofile(request):
-    profile = PersonalDetailsLandloard.objects.get(user = request.user)
-    context = {
+    try:
+        profile = PersonalDetailsLandloard.objects.get(user = request.user)
+        context = {
         "profile":profile
-    }
-    return render(request,"landloardprofile.html",context)
+        }
+        return render(request,"landloardprofile.html",context)
+    except:
+        return redirect("PersonaldetailsLandloard")
     
 @login_required(login_url='SignIn')
 def PersonaldetailsLandloard(request):
